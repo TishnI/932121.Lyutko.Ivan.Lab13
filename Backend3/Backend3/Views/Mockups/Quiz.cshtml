@@ -1,0 +1,37 @@
+﻿@{
+	ViewBag.Title = "Hello Quiz";
+}
+
+
+
+@if (ViewBag.Results is null)
+{
+	<h2>Quiz</h2>
+	<div class="col-md-3">
+		<form action="@Url.Action("Quiz", "Mockups")" method="post">
+			<label>@ViewBag.Question</label>
+			<input class="form-control" type="text" name="Response" />
+
+			<div class="mt-2">
+				<input class="btn btn-outline-dark" type="submit" name="action" value="Next" />
+				<input class="btn btn-primary" type="submit" name="action" value="Finish" />
+			</div>
+
+		</form>
+	</div>
+
+}
+else
+{
+	<h2>Quiz results</h2>
+	<h4>Right answers @ViewBag.CorrectAnswersCount out @ViewBag.QuestionCount</h4>
+
+	<p class="ms-4">
+		@foreach (var result in ViewBag.Results)
+		{
+			@result<br>
+		}
+	</p>
+
+}
+
